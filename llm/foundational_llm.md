@@ -94,4 +94,38 @@ The output layer (e.g., Softmax) is the final layer that produces the output of 
 
 ## Steps of transformer architecture
 
-### Dataset Preparation and Tokenization
+### Input preparation and embedding
+1. Normalization
+2. Tokenization
+3. Embedding
+4. Positional Encoding
+
+### Attention
+After the embedding, the input is passed to the multi-head attention layer(see picture). The multi-head attention layer is a key component of the transformer architecture. It allows them to focus on specific parts of the input sequence relevant to
+the task at hand and to capture long-range dependencies within sequences more effectively.
+
+#### Self-Attention
+Consider the following sentence: “The tiger jumped out of a tree to get a drink because it was thirsty.” Self-attention helps to determine relationships between different words and phrases in sentences. For example, in this sentence, “the tiger” and “it” are the same object.
+
+How does it work? The entire work is done in multiple steps.
+
+1. **Creating queries, keys, and values**: The self-attention mechanism computes a score for each word in the input sequence based on its relationship with every other word in the sequence. For this it needs 3 vectors: Query, Key and Value. Each input embedding is multiplied by three learned
+weight matrices (Wq, Wk, Wv) to generate query (Q), key (K), and value (V) vectors.
+   - **Query**: The word we are currently processing. For example, in the sentence “The tiger jumped out of a tree to get a drink because it was thirsty.”, for the example above, the query is "It". The query vector is a vector associated with the query word.
+   - **Key**: The word we are comparing the query to. For example, in the sentence “The tiger jumped out of a tree to get a drink because it was thirsty.”, the key is "The tiger". The key vector is a vector associated with the key word.
+   - **Value**: The value vector holds the actual word content information.
+
+2. **Calculating scores**: Next step is to compute the attention score. Scores are calculated to determine how much each word should ‘attend’ to other words. This is done by taking the dot product of the query vector of one word with the key vectors of all the words in the sequence.
+3. **Score Normalization**: The scores are divided by the square root of the key vector dimension (dk) for stability, then passed through a softmax function to obtain attention weights. These weights indicate how strongly each word is connected to the others.
+4. **Weighted sum**: Each value vector is multiplied by its corresponding attention weight. The results are summed up, producing a context-aware representation for each word.
+
+#### Multi-Head Attention
+Multi-head attention is an extension of the self-attention mechanism. Instead of using a single set of query, key, and value vectors, multi-head attention uses multiple sets (or heads) of these vectors. These run in parallel, each ‘head’ potentially focusing on different aspects of the input relationships. The outputs from each head are concatenated and linearly transformed, giving the model a richer representation of the input sequence.
+
+### Layer Normalization and Residual Connections
+Layer normalization is applied to the output of the multi-head attention layer and the feed-forward layer. It normalizes the output across the features, ensuring that the model learns more effectively. This reduces the internal covariate shift(https://www.youtube.com/watch?v=W9g7j22MO-Q) as well as improve gradient flow to yield faster convergence during training as well as improved overall performance. 
+Residual connections are also used, allowing the model to learn more complex functions by adding the input of a layer to its output. This helps to prevent the vanishing gradient problem and allows for deeper networks.
+The "add & norm" layer is a combination of the residual connection and layer normalization. It adds the input of the layer to its output and then applies layer normalization to the result. This layer is applied to after both the multi-head attention layer and the feed-forward layers.
+
+### Feed-Forward Layer
+The feed-forward layer is a fully connected layer that applies a non-linear transformation to the input. It consists of two linear transformations with a ReLU or GeLU activation function in between. The output of the feed-forward layer is then passed through another "add & norm" layer, which adds the input of the layer to its output and applies layer normalization.
