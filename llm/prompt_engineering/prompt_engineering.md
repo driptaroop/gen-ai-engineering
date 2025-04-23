@@ -38,3 +38,18 @@ At extreme settings of one sampling configuration value, that one sampling setti
 - **Top-K**: 25 to 40 for a balance between creativity and coherence. ~100 for more creative outputs.
 - If your task always has a single correct answer (e.g., answering a math or coding problem), start with a temperature of 0.
 
+## Prompting
+Prompting is the process of providing input to a language model in a way that guides its response. Compared to sampling controls, prompting is a more direct way to influence the model's output.
+
+### General Prompting Basics
+Generally, prompts are often created in one of three formats,
+1. Question
+2. Incomplete statement
+3. Instruction
+
+Check out the [Prompting](./07_general_prompting.ipynb) notebook for more details and examples.
+
+### Prompting Techniques
+There are several techniques that can be used to improve the effectiveness of prompts. For example,
+- [**Zero-shot prompting**](./08_zero_shot_prompting.ipynb)
+
