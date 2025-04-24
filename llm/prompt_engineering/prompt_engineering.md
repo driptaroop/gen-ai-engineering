@@ -54,4 +54,5 @@ There are several techniques that can be used to improve the effectiveness of pr
 - [**Zero-shot prompting**](./08_zero_shot_prompting.ipynb)
 - [**One and few-shot prompting**](./09_one_few_shot_prompting.ipynb)
 - [**Step back prompting**](./10_step_back_prompting.ipynb)
+- [**Chain of thought prompting**](./11_chain_of_thought_prompting.ipynb)
 
