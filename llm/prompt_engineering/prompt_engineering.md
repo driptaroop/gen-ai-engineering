@@ -52,4 +52,6 @@ Check out the [Prompting](./07_general_prompting.ipynb) notebook for more detail
 ### Prompting Techniques
 There are several techniques that can be used to improve the effectiveness of prompts. For example,
 - [**Zero-shot prompting**](./08_zero_shot_prompting.ipynb)
+- [**One and few-shot prompting**](./09_one_few_shot_prompting.ipynb)
+- [**Step back prompting**](./10_step_back_prompting.ipynb)
 
