@@ -56,4 +56,5 @@ There are several techniques that can be used to improve the effectiveness of pr
 - [**Step back prompting**](./10_step_back_prompting.ipynb)
 - [**Chain of thought prompting**](./11_chain_of_thought_prompting.ipynb)
 - [**Self-consistency prompting**](./12_self_consistency_prompting.ipynb)
+- [**Tree of thought prompting**](./13_tree_of_thought_prompting.ipynb)
 
